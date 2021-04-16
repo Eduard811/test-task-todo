@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleEditMode, addTask } from '../../redux/reducers/todosReducer'
+import { toggleEditMode, addTask, openModal } from '../../redux/reducers/todosReducer'
 import { Cancel, Plus } from '../common/Svg'
 
 const Todos = () => {
@@ -21,6 +21,10 @@ const Todos = () => {
     }
   }
 
+  const onOpenModal = (todoId, taskId) => {
+    dispatch(openModal(todoId, taskId))
+  }
+
   return (
     <div className="b-todos">
       {todos.map((el) => (
@@ -29,7 +33,7 @@ const Todos = () => {
           {el.tasks.length > 0 && (
             <ul className="b-todos__todo__collection">
               {el.tasks.map((task) => (
-                <li className="b-todos__todo__clause">
+                <li className="b-todos__todo__clause" onClick={() => onOpenModal(el.id, task.id)}>
                   {task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}
                 </li>
               ))}

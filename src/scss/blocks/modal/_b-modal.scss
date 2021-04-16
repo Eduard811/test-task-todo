@@ -1,0 +1,59 @@
+.b-modal {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(63, 63, 63, 0.45);
+
+  &__inside {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 600px;
+    height: fit-content;
+    padding: 16px 16px 13px 16px;
+    background-color: $todo-bg;
+    border-radius: 5px;
+  }
+
+  &__header {
+    display: flex;
+    & h3 {
+      @include modal-title;
+      margin-right: 33px;
+    }
+
+    & button {
+      display: flex;
+      width: 14px;
+      height: 14px;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  &__footer {
+    margin-top: 16px;
+  }
+
+  & textarea {
+    @include commot-textarea;
+    height: 95px;
+    padding: 12px;
+  }
+}
+
+.open-modal {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+}
