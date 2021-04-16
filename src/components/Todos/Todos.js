@@ -15,17 +15,26 @@ const Todos = () => {
       {todos.map((el) => (
         <div className="b-todos__todo" key={el.id}>
           <h5 className="b-todos__todo__title">{el.title}</h5>
-          <ul className="b-todos__todo__collection">
-            <li className="b-todos__todo__clause"></li>
-          </ul>
+          {el.tasks.length > 0 && (
+            <ul className="b-todos__todo__collection">
+              {el.tasks.map((task) => (
+                <li className="b-todos__todo__clause">{task.title}</li>
+              ))}
+            </ul>
+          )}
           {el.editMode ? (
-            <div className="b-todos__todo__button">
-              <button className="b-button-secondary">Добавить карточку</button>
-              <button className="b-button" onClick={() => onChangeEditMode(el.editMode, el.id)}>
-                <Cancel />
-                Отмена
-              </button>
-            </div>
+            <>
+              <div className="b-todos__todo__input">
+                <textarea placeholder="Введите текст карточки" />
+              </div>
+              <div className="b-todos__todo__button">
+                <button className="b-button-secondary">Добавить карточку</button>
+                <button className="b-button" onClick={() => onChangeEditMode(el.editMode, el.id)}>
+                  <Cancel />
+                  Отмена
+                </button>
+              </div>
+            </>
           ) : (
             <div className="b-todos__todo__button">
               <button className="b-button" onClick={() => onChangeEditMode(el.editMode, el.id)}>
