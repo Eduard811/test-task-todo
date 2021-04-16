@@ -1,4 +1,5 @@
 const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE'
+const ADD_TASK = 'ADD_TASK'
 
 const initialState = {
   //моковые данные
@@ -9,7 +10,10 @@ const initialState = {
       editMode: false,
       tasks: [
         { title: 'Пример текста карточки', description: '' },
-        { title: 'Пример длинного текста карточки, до такого чтобы он вообще не ...', description: '' },
+        {
+          title: 'Пример длинного текста карточки, до такого чтобы он вообще не поместился',
+          description: '',
+        },
       ],
     },
     { id: 2, title: 'На проверке', editMode: false, tasks: [] },
@@ -23,8 +27,18 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         ...state.todos.forEach((el) => {
+          el.editMode = false
           if (el.id === action.id) {
             el.editMode = action.bool
+          }
+        }),
+      }
+    case ADD_TASK:
+      return {
+        ...state,
+        ...state.todos.forEach((el) => {
+          if (el.id === action.id && action.text) {
+            el.tasks.push({ title: action.text, description: '' })
           }
         }),
       }
@@ -34,5 +48,6 @@ const todosReducer = (state = initialState, action) => {
 }
 
 export const toggleEditMode = (bool, id) => ({ type: TOGGLE_EDIT_MODE, bool, id })
+export const addTask = (text, id) => ({ type: ADD_TASK, text, id })
 
 export default todosReducer

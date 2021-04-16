@@ -2,7 +2,7 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box
+  box-sizing: border-box;
 }
 
 /* Reset (default browsers styles erasing) */
@@ -83,13 +83,14 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  word-wrap: break-word;
 }
 
 article,
@@ -103,51 +104,49 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
-
-
 *:focus {
-    outline: 0;
+  outline: 0;
 }
 
 /* Remove list styles and paddings on ul, ol elements with a class attribute */
 ul[class],
 ol[class] {
-    padding: 0;
-    list-style: none;
+  padding: 0;
+  list-style: none;
 }
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
-    text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: '';
+  content: none;
 }
 
 ins {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 del {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
@@ -162,10 +161,10 @@ table {
 
 /* Set core body defaults */
 body {
-    min-height: 100vh;
-    scroll-behavior: smooth;
+  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
