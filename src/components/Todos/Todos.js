@@ -15,8 +15,10 @@ const Todos = () => {
   }
 
   const onAddTask = (id) => {
-    dispatch(addTask(text, id))
-    setText('')
+    if (!!text) {
+      dispatch(addTask(text, id))
+      setText('')
+    }
   }
 
   return (

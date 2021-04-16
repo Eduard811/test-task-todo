@@ -37,7 +37,7 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         ...state.todos.forEach((el) => {
-          if (el.id === action.id && action.text) {
+          if (el.id === action.id) {
             el.tasks.push({ title: action.text, description: '' })
           }
         }),
