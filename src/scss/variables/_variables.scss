@@ -1,0 +1,78 @@
+//text fonts
+$primary-font: 'Roboto', Helvetica, Arial, sans-serif;
+
+//text styles
+@mixin common-text-style {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+@mixin title-s {
+  @include common-text-style;
+  color: $title-s;
+}
+
+@mixin body-s {
+  @include common-text-style;
+  color: $body-s;
+}
+
+//color styles
+$title-s: #404b5a;
+$body-s: #212934;
+$white: #ffff;
+
+$primary-background: #1d8b77;
+
+$primary-button: #626262;
+$primary-button-bg: #c4c4c4;
+$secondary-button-bg: #0c7cd5;
+$secondary-button-bg-hover: #076fc4;
+
+$todo-bg: #d4d4d4;
+
+//button styles
+@mixin default-button-style {
+  @include common-text-style;
+  padding: 7px 12px;
+  border-radius: 3px;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+
+@mixin primary-button {
+  @include default-button-style;
+  color: $primary-button;
+
+  &:hover {
+    background-color: $primary-button-bg;
+  }
+}
+
+@mixin secondary-button {
+  @include default-button-style;
+  color: $white;
+  background-color: $secondary-button-bg;
+
+  &:hover {
+    background-color: $secondary-button-bg-hover;
+  }
+}
+
+//todos styles
+@mixin todo {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 12px 12px 8px 12px;
+  background-color: $todo-bg;
+  border-radius: 5px;
+}

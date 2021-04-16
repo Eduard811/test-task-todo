@@ -2,7 +2,15 @@
 @import './reset';
 /* Fonts (including not standart fonts) */
 @import './fonts';
-/* Overrides extra padding in Firefox */ 
+/* Overrides extra padding in Firefox */
 @import './firefox-overrides';
 /* Variables */
 @import './variables/variables';
+/* Common (common styles) */
+@import './common-styles';
+/* Layout / prefix — l- */
+@import './layout-styles';
+/* Basic (basic blocks, which are the basis) / prefix — b- */
+@import './blocks-styles';
+/* Media */
+@import './media';

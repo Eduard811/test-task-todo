@@ -1,7 +1,11 @@
-function App() {
+import Todos from './components/Todos/Todos'
+
+const App = () => {
   return (
-    <div>
-      <h1>Hello world</h1>
+    <div className="l-outer">
+      <div className="l-content-section-inside">
+        <Todos />
+      </div>
     </div>
   )
 }

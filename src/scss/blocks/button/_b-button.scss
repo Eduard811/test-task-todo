@@ -1,0 +1,12 @@
+.b-button {
+  @include primary-button;
+  display: flex;
+  align-items: center;
+  & svg {
+    margin-right: 13px;
+  }
+}
+
+.b-button-secondary {
+  @include secondary-button;
+}

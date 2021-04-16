@@ -1,0 +1,12 @@
+.l-outer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.l-content-section-inside {
+    width: 996px;
+    margin: 0 auto;
+    position: relative;
+}

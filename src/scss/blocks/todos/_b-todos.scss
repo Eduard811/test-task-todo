@@ -1,0 +1,23 @@
+.b-todos {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 36px 24px;
+  margin-right: -24px;
+  margin-bottom: -24px;
+
+  &__todo {
+    @include todo;
+    margin-right: 24px;
+    margin-bottom: 24px;
+
+    &__title {
+      @include title-s;
+    }
+
+    &__button {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  }
+}
