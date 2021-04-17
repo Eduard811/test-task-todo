@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { toggleEditMode, addTask, openModal } from '../../redux/reducers/todosReducer'
 import { Cancel, Plus } from '../common/Svg'
 import { Link } from 'react-router-dom'
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 
 const Todos = () => {
-  const { todos } = useSelector((state) => state.todos)
+  const { todos, styledTask } = useSelector((state) => state.todos)
   const dispatch = useDispatch()
 
   const [text, setText] = useState('')
@@ -31,20 +32,37 @@ const Todos = () => {
       {todos.map((el) => (
         <div className="b-todos__todo" key={el.id}>
           <h5 className="b-todos__todo__title">{el.title}</h5>
-          {el.tasks.length > 0 && (
-            <ul className="b-todos__todo__collection">
-              {el.tasks.map((task) => (
-                <Link
-                  to={`/${task.id}`}
-                  className="b-todos__todo__clause"
-                  onClick={() => onOpenModal(el.id, task.id)}
-                  key={task.id}
-                >
-                  <li>{task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}</li>
-                </Link>
-              ))}
-            </ul>
-          )}
+          <Droppable droppableId={el.id.toString()}>
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {el.tasks.length > 0 && (
+                  <ul className="b-todos__todo__collection">
+                    {el.tasks.map((task, index) => (
+                      <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+                        {(provided) => (
+                          <Link
+                            {...provided.draggableProps}
+                            ref={provided.innerRef}
+                            {...provided.dragHandleProps}
+                            to={`/${task.id}`}
+                            className={`b-todos__todo__clause ${
+                              styledTask && styledTask.isActive && styledTask.id === task.id ? 'active' : ''
+                            }`}
+                            onClick={() => onOpenModal(el.id, task.id)}
+                          >
+                            <li>
+                              {task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}
+                            </li>
+                          </Link>
+                        )}
+                      </Draggable>
+                    ))}
+                  </ul>
+                )}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
           {el.editMode ? (
             <>
               <div className="b-todos__todo__input">

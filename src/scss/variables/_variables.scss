@@ -43,6 +43,8 @@ $placeholder: #989898;
 
 $todo-bg: #d4d4d4;
 
+$active-task: #c7f1ff;
+
 //button styles
 @mixin default-button-style {
   @include common-text-style;
