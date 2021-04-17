@@ -36,6 +36,9 @@ const Modal = ({ title, description }) => {
   }
 
   const onSaveText = () => {
+    if (!modalTitle) {
+      return alert('Заголовок не может быть пустым')
+    }
     dispatch(saveText(modalTitle, text))
     dispatch(closeModal())
   }
