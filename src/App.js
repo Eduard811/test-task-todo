@@ -11,7 +11,7 @@ const App = () => {
       <div className="l-content-section-inside">
         <Todos />
       </div>
-      {isOpen && task && <Modal title={task[0].title} description={task[0].description} />}
+      {isOpen && task && <Modal title={task.title} description={task.description} />}
     </div>
   )
 }

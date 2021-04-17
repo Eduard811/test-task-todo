@@ -53,7 +53,7 @@ const todosReducer = (state = initialState, action) => {
         isOpen: true,
         task: state.todos
           .find((todo) => todo.id === action.todoId)
-          .tasks.filter((task) => task.id === action.taskId),
+          .tasks.filter((task) => task.id === action.taskId)[0],
       }
     case CLOSE_MODAL:
       return {
@@ -61,9 +61,10 @@ const todosReducer = (state = initialState, action) => {
         isOpen: false,
       }
     case SAVE_TEXT:
+      state.task.title = action.modalTitle
+      state.task.description = action.text
       return {
         ...state,
-        ...state.task.forEach((el) => (el.description = action.text)),
       }
     default:
       return state
@@ -74,6 +75,6 @@ export const toggleEditMode = (bool, id) => ({ type: TOGGLE_EDIT_MODE, bool, id 
 export const addTask = (text, id) => ({ type: ADD_TASK, text, id })
 export const openModal = (todoId, taskId) => ({ type: OPEN_MODAL, todoId, taskId })
 export const closeModal = () => ({ type: CLOSE_MODAL })
-export const saveText = (text) => ({ type: SAVE_TEXT, text })
+export const saveText = (modalTitle, text) => ({ type: SAVE_TEXT, text, modalTitle })
 
 export default todosReducer

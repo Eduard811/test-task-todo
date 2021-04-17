@@ -6,6 +6,10 @@ import { closeModal, saveText } from '../../redux/reducers/todosReducer'
 const Modal = ({ title, description }) => {
   const dispatch = useDispatch()
   const node = useRef()
+
+  const [editMode, setEditMode] = useState(false)
+
+  const [modalTitle, setModalTitle] = useState(title)
   const [text, setText] = useState(description)
 
   const handleOutsideClick = (event) => {
@@ -32,15 +36,21 @@ const Modal = ({ title, description }) => {
   }
 
   const onSaveText = () => {
-    dispatch(saveText(text))
+    dispatch(saveText(modalTitle, text))
     dispatch(closeModal())
   }
+
+  const toggleEditMode = () => setEditMode(!editMode)
 
   return (
     <div className="b-modal">
       <div className="b-modal__inside" ref={node}>
         <div className="b-modal__header">
-          <h3>{title}</h3>
+          {editMode ? (
+            <textarea value={modalTitle} onChange={(e) => setModalTitle(e.target.value)} />
+          ) : (
+            <h3 onClick={toggleEditMode}>{title}</h3>
+          )}
           <button className="b-modal__button" onClick={onCloseModal}>
             <Cancel />
           </button>

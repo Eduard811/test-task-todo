@@ -23,6 +23,19 @@
     & h3 {
       @include modal-title;
       width: 521px;
+      cursor: pointer;
+      border-radius: 2px;
+      &:hover {
+        background-color: $primary-button-bg;
+      }
+    }
+
+    & textarea {
+      @include commot-textarea;
+      @include modal-title;
+      width: 542px;
+      height: 64px;
+      padding: 4px 17px 4px 4px;
     }
 
     & button {
@@ -39,16 +52,15 @@
   &__body {
     display: flex;
     margin-top: 16px;
+    & textarea {
+      @include commot-textarea;
+      height: 95px;
+      padding: 12px;
+    }
   }
 
   &__footer {
     margin-top: 16px;
-  }
-
-  & textarea {
-    @include commot-textarea;
-    height: 95px;
-    padding: 12px;
   }
 }
 
