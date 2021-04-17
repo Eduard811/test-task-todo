@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleEditMode, addTask, openModal } from '../../redux/reducers/todosReducer'
 import { Cancel, Plus } from '../common/Svg'
+import { Link } from 'react-router-dom'
 
 const Todos = () => {
   const { todos } = useSelector((state) => state.todos)
@@ -33,13 +34,14 @@ const Todos = () => {
           {el.tasks.length > 0 && (
             <ul className="b-todos__todo__collection">
               {el.tasks.map((task) => (
-                <li
-                  key={task.id}
+                <Link
+                  to={`/${task.id}`}
                   className="b-todos__todo__clause"
                   onClick={() => onOpenModal(el.id, task.id)}
+                  key={task.id}
                 >
-                  {task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}
-                </li>
+                  <li>{task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}</li>
+                </Link>
               ))}
             </ul>
           )}

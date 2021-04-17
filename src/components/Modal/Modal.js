@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Cancel } from '../common/Svg'
 import { useDispatch } from 'react-redux'
 import { closeModal, saveText } from '../../redux/reducers/todosReducer'
+import { useHistory } from 'react-router-dom'
 
 const Modal = ({ title, description }) => {
   const dispatch = useDispatch()
   const node = useRef()
+
+  const history = useHistory()
 
   const [editMode, setEditMode] = useState(false)
 
@@ -17,6 +20,7 @@ const Modal = ({ title, description }) => {
     if (!path.includes(node.current)) {
       dispatch(closeModal())
       setText(description)
+      someEventHandler()
     }
   }
 
@@ -33,6 +37,7 @@ const Modal = ({ title, description }) => {
   const onCloseModal = () => {
     dispatch(closeModal())
     setText(description)
+    someEventHandler()
   }
 
   const onSaveText = () => {
@@ -41,6 +46,12 @@ const Modal = ({ title, description }) => {
     }
     dispatch(saveText(modalTitle, text))
     dispatch(closeModal())
+  }
+
+  const someEventHandler = (event) => {
+    history.push({
+      pathname: '/',
+    })
   }
 
   const toggleEditMode = () => setEditMode(!editMode)
