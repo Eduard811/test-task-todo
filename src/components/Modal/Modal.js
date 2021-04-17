@@ -1,16 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Cancel } from '../common/Svg'
 import { useDispatch } from 'react-redux'
-import { closeModal } from '../../redux/reducers/todosReducer'
+import { closeModal, saveText } from '../../redux/reducers/todosReducer'
 
-const Modal = () => {
+const Modal = ({ title, description }) => {
   const dispatch = useDispatch()
   const node = useRef()
+  const [text, setText] = useState(description)
 
   const handleOutsideClick = (event) => {
     const path = event.path || (event.composedPath && event.composedPath())
     if (!path.includes(node.current)) {
       dispatch(closeModal())
+      setText(description)
     }
   }
 
@@ -26,22 +28,30 @@ const Modal = () => {
 
   const onCloseModal = () => {
     dispatch(closeModal())
+    setText(description)
+  }
+
+  const onSaveText = () => {
+    dispatch(saveText(text))
+    dispatch(closeModal())
   }
 
   return (
     <div className="b-modal">
       <div className="b-modal__inside" ref={node}>
         <div className="b-modal__header">
-          <h3>Пример длинного текста карточки, до такого чтобы он вообще не поместился</h3>
+          <h3>{title}</h3>
           <button className="b-modal__button" onClick={onCloseModal}>
             <Cancel />
           </button>
         </div>
         <div className="b-modal__body">
-          <textarea placeholder="Описание" />
+          <textarea value={text} placeholder="Описание" onChange={(e) => setText(e.target.value)} />
         </div>
         <div className="b-modal__footer">
-          <button className="b-button-secondary">Сохранить</button>
+          <button className="b-button-secondary" onClick={onSaveText}>
+            Сохранить
+          </button>
         </div>
       </div>
     </div>

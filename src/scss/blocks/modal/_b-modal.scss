@@ -19,9 +19,10 @@
 
   &__header {
     display: flex;
+    justify-content: space-between;
     & h3 {
       @include modal-title;
-      margin-right: 33px;
+      width: 521px;
     }
 
     & button {

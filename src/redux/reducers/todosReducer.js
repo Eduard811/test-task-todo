@@ -2,6 +2,7 @@ const TOGGLE_EDIT_MODE = 'TOGGLE_EDIT_MODE'
 const ADD_TASK = 'ADD_TASK'
 const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
+const SAVE_TEXT = 'SAVE_TEXT'
 
 const initialState = {
   isOpen: false,
@@ -16,7 +17,7 @@ const initialState = {
         {
           id: 2,
           title: 'Пример длинного текста карточки, до такого чтобы он вообще не поместился',
-          description: '',
+          description: 'Какой то текст',
         },
       ],
     },
@@ -59,6 +60,11 @@ const todosReducer = (state = initialState, action) => {
         ...state,
         isOpen: false,
       }
+    case SAVE_TEXT:
+      return {
+        ...state,
+        ...state.task.forEach((el) => (el.description = action.text)),
+      }
     default:
       return state
   }
@@ -68,5 +74,6 @@ export const toggleEditMode = (bool, id) => ({ type: TOGGLE_EDIT_MODE, bool, id 
 export const addTask = (text, id) => ({ type: ADD_TASK, text, id })
 export const openModal = (todoId, taskId) => ({ type: OPEN_MODAL, todoId, taskId })
 export const closeModal = () => ({ type: CLOSE_MODAL })
+export const saveText = (text) => ({ type: SAVE_TEXT, text })
 
 export default todosReducer

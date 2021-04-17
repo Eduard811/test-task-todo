@@ -33,7 +33,11 @@ const Todos = () => {
           {el.tasks.length > 0 && (
             <ul className="b-todos__todo__collection">
               {el.tasks.map((task) => (
-                <li className="b-todos__todo__clause" onClick={() => onOpenModal(el.id, task.id)}>
+                <li
+                  key={task.id}
+                  className="b-todos__todo__clause"
+                  onClick={() => onOpenModal(el.id, task.id)}
+                >
                   {task.title.length > 61 ? task.title.slice(0, 61) + ' ' + '...' : task.title}
                 </li>
               ))}

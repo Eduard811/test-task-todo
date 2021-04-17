@@ -2,4 +2,10 @@
   &__inside {
     width: 320px;
   }
+
+  &__header {
+    & h3 {
+      width: 280px;
+    }
+  }
 }
