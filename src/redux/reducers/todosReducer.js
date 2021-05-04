@@ -4,7 +4,7 @@ const OPEN_MODAL = 'OPEN_MODAL'
 const CLOSE_MODAL = 'CLOSE_MODAL'
 const SAVE_TEXT = 'SAVE_TEXT'
 const TOGGLE_IS_ACTIVE = 'TOGGLE_IS_ACTIVE'
-
+//id должен быть уникальным
 const initialState = {
   isOpen: false,
   todos: [
@@ -24,9 +24,36 @@ const initialState = {
     },
     { id: 2, title: 'На проверке', editMode: false, tasks: [] },
     { id: 3, title: 'Выполнено', editMode: false, tasks: [] },
-    // { id: 4, title: 'тест1', editMode: false, tasks: [] },
-    // { id: 5, title: 'тест2', editMode: false, tasks: [] },
-    // { id: 6, title: 'тест3', editMode: false, tasks: [] },
+    // {
+    //   id: Math.random(),
+    //   title: 'тест1',
+    //   editMode: false,
+    //   tasks: [
+    //     { id: Math.random(), title: 'Пример текста карточки', description: '', isActive: false },
+    //     {
+    //       id: Math.random(),
+    //       title: 'Пример длинного текста карточки, до такого чтобы он вообще не поместился',
+    //       description: 'Какой то текст',
+    //       isActive: false,
+    //     },
+    //     { id: Math.random(), title: 'Пример текста карточки', description: '', isActive: false },
+    //     {
+    //       id: Math.random(),
+    //       title: 'Пример длинного текста карточки, до такого чтобы он вообще не поместился',
+    //       description: 'Какой то текст',
+    //       isActive: false,
+    //     },
+    //     { id: Math.random(), title: 'Пример текста карточки', description: '', isActive: false },
+    //     {
+    //       id: Math.random(),
+    //       title: 'Пример длинного текста карточки, до такого чтобы он вообще не поместился',
+    //       description: 'Какой то текст',
+    //       isActive: false,
+    //     },
+    //   ],
+    // },
+    // { id: Math.random(), title: 'тест2', editMode: false, tasks: [] },
+    // { id: Math.random(), title: 'тест3', editMode: false, tasks: [] },
   ],
 }
 
